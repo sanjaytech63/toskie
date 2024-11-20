@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.responsive-image-container {
+  text-align: center;
+}
+
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: "270px" !important;
+  max-height: "auto" !important;
+  object-fit: cover;
+}
+
+
+@media (min-width: 600px) {
+  .responsive-image-container {
+    text-align: center;
+    max-width: "270px";
+    height: "auto";
+  }
+}
+
+@media (min-width: 900px) {
+  .responsive-image-container {
+    text-align: right;
+  }
+
+  .responsive-image {
+    width: 403px;
+    height: 442px;
+  }
+}

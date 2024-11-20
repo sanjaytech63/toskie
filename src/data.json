@@ -1,0 +1,53 @@
+{
+  "sidebar": [
+    {
+      "icon": "ElectricBolt",
+      "label": "Electricians",
+      "key": "/Electricians"
+    },
+    {
+      "icon": "Plumbing",
+      "label": "Plumbers",
+      "key": "/Plumber"
+    },
+    {
+      "icon": "Plumbing",
+      "label": "Plumbers",
+      "key": "/Plumbe"
+    },
+    {
+      "icon": "Plumbing",
+      "label": "Plumbers",
+      "key": "/Plumb"
+    },
+    {
+      "icon": "Plumbing",
+      "label": "Plumbers",
+      "key": "/Plum"
+    }
+  ],
+  "mainContent": {
+    "/Electricians": [
+      {
+        "id": 1,
+        "name": "Mark",
+        "profilePic": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+        "description": "Known to 30 users",
+        "images": [
+          "https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg",
+          "https://media.istockphoto.com/id/615422436/photo/demo-sign-cubes.jpg?s=612x612&w=0&k=20&c=HHOLIiF8SmbIssxKv3G480EgTVub_v9cc1QME3Dn6XU="
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Lucy",
+        "profilePic": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+        "description": "Highly recommended",
+        "images": [
+          "https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg",
+          "https://media.istockphoto.com/id/615422436/photo/demo-sign-cubes.jpg?s=612x612&w=0&k=20&c=HHOLIiF8SmbIssxKv3G480EgTVub_v9cc1QME3Dn6XU="
+        ]
+      }
+    ]
+  }
+}
