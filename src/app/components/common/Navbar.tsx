@@ -13,17 +13,19 @@ import {
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import Link from "next/link";
-
+import Login from "../login";
 const menuItems = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Blogs", href: "/blogs" },
+    { label: "Blogs", href: "https://blogs.toskie.com/" },
     { label: "ProfilePage", href: "/profile" },
 ];
 
 const Navbar: React.FC = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+     const [open, setOpen] = useState(false);
+
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -36,7 +38,7 @@ const Navbar: React.FC = () => {
     return (
         <Box sx={{ backgroundColor: "#f1efef" }}>
             <AppBar
-                position="static"
+                position="sticky"
                 color="default"
                 sx={{ backgroundColor: "#f1efef", boxShadow: "none" }}
             >
@@ -50,7 +52,7 @@ const Navbar: React.FC = () => {
                                 flexGrow: 1,
                             }}
                         >
-                            <img
+                            <Box component={"img"}
                                 src="https://www.toskie.com/assets/images/home-toskie.png"
                                 alt="toskie logo"
                                 title="toskie logo"
@@ -66,8 +68,8 @@ const Navbar: React.FC = () => {
                                 justifyContent: "center",
                             }}
                         >
-                            {menuItems.map((item) => (
-                                <Link key={item.label} href={item.href} passHref>
+                            {menuItems.map((item,index) => (
+                                <Link key={index} href={item.href} passHref target= {item.label ==="Blogs" ? "_blank" :"_self"}>
                                     <Button
                                         sx={{
                                             color: "#333",
@@ -87,8 +89,8 @@ const Navbar: React.FC = () => {
 
                         {/* Login Button */}
                         <Box sx={{ display: { xs: "none", md: "block" } }}>
-                            <Link href="/login" passHref>
-                                <Button
+                            
+                                <Button onClick={()=>setOpen(true)}
                                     variant="outlined"
                                     sx={{
                                         backgroundColor: "#38b6ff",
@@ -99,7 +101,7 @@ const Navbar: React.FC = () => {
                                 >
                                     Login / Sign Up
                                 </Button>
-                            </Link>
+                            
                         </Box>
 
                         {/* Mobile Menu */}
@@ -123,9 +125,9 @@ const Navbar: React.FC = () => {
                                     textAlign: "center",
                                 }}
                             >
-                                {menuItems.map((item) => (
+                                {menuItems.map((item,index) => (
                                     <MenuItem
-                                        key={item.label}
+                                        key={index}
                                         onClick={handleMenuClose}
                                         sx={{
                                             display: "flex",
@@ -154,22 +156,21 @@ const Navbar: React.FC = () => {
                                     }}
                                     onClick={handleMenuClose}
                                 >
-                                    <Link
-                                        href="/login"
-                                        passHref
+                                    <Button onClick={()=>setOpen(true)}
                                         style={{
                                             textDecoration: "none",
                                             color: "inherit",
                                         }}
                                     >
                                         Login / Sign Up
-                                    </Link>
+                                    </Button>
                                 </MenuItem>
                             </Menu>
                         </Box>
                     </Toolbar>
                 </Container>
             </AppBar>
+            <Login open={open} onClose={()=>setOpen(false)} />
         </Box>
     );
 };

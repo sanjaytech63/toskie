@@ -4,7 +4,6 @@ import React from 'react';
 import { Box, Grid, Typography, Link, Divider, Container } from '@mui/material';
 import { Facebook, Twitter, Instagram, YouTube, LinkedIn } from '@mui/icons-material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (

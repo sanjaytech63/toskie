@@ -26,8 +26,7 @@ const DownloadApp: React.FC = () => {
                                 src={appDownloadImg}
                                 alt="Download app icon"
                                 title="App Download Icon"
-                                width={403}
-                                height={442}
+                                style={{ width: "100%", height: "442px",objectFit: "contain" }}
                                 className="responsive-image"
                             />
                         </Grid>

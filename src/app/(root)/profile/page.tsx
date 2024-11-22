@@ -6,6 +6,7 @@ import MainContent from "../../components/MainContent";
 
 // Import JSON data
 import data from "../../../data.json";
+import Head from "next/head";
 
 type SidebarMenuItem = {
     icon: string;
@@ -29,28 +30,58 @@ type DataType = {
 };
 
 const page = () => {
-    const [selectedKey, setSelectedKey] = useState<keyof DataType["mainContent"]>("/Electricians");
-
-    const handleSelect = (key: string) => {
-        setSelectedKey(key as keyof DataType["mainContent"]);
-    };
-
     return (
+        <>
+            <Head>
+                <title>Professional Profiles</title>
+                <meta
+                    name="description"
+                    content="Explore a variety of professional profiles in categories like electricians, plumbers, doctors, home services, IT services, and more on Toskie."
+                />
+                <meta
+                    name="keywords"
+                    content="electrician, plumber, doctor, home services, IT services, professionals, Toskie"
+                />
+
+                {/* Open Graph Meta Tags for Social Sharing */}
+                <meta property="og:title" content="Professional Profiles | Toskie" />
+                <meta
+                    property="og:description"
+                    content="Explore a variety of professional profiles in categories like electricians, plumbers, doctors, home services, IT services, and more on Toskie."
+                />
+                <meta property="og:image" content="/images/social-image.jpg" />
+                <meta property="og:url" content="http://mysite.com/profile" />
+                <meta property="og:type" content="website" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:title" content="Professional Profiles | Toskie" />
+                <meta
+                    name="twitter:description"
+                    content="Explore a variety of professional profiles in categories like electricians, plumbers, doctors, home services, IT services, and more on Toskie."
+                />
+                <meta name="twitter:image" content="/images/social-image.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+
+                {/* Canonical URL */}
+                <link rel="canonical" href="https://toskie.com/profiles" />
+            </Head>
         <div style={{ minHeight: "100vh", }}>
-            <Container maxWidth="lg" sx={{ py: 4 }}>
+            <Container maxWidth="xl" sx={{ py: 4 }}>
                 <Grid container spacing={2}>
                     {/* Sidebar */}
                     <Grid item xs={12} md={3}>
-                        <Sidebar menu={data.sidebar} onSelect={handleSelect} />
+                        <Sidebar/>
                     </Grid>
 
                     {/* Main Content */}
                     <Grid item xs={12} md={9}>
+                        <Grid item maxWidth={"5.692308% !important"} xs={1}></Grid>
                         <MainContent data={data.mainContent["/Electricians"]} />
                     </Grid>
                 </Grid>
             </Container>
         </div>
+        </>
     );
 };
 

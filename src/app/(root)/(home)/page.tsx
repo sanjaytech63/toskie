@@ -4,9 +4,11 @@ import { Box, Container, Grid, Typography, TextField, Button, InputAdornment, Ic
 import { Search as SearchIcon, LocationOn as LocationIcon, Clear as ClearIcon } from '@mui/icons-material';
 import { useState } from 'react';
 import DownloadApp from '@/app/components/DownloadApp';
+import CategorySlider from '@/app/components/categorySlider';
+import CloseIcon from "@mui/icons-material/Close";
+import Head from 'next/head';
 
-
-const page = () => {
+const Page = () => {
   const [searchValue, setSearchValue] = useState('');
   const [locationValue, setLocationValue] = useState('');
   const [rangeValue, setRangeValue] = useState(15);
@@ -25,6 +27,53 @@ const page = () => {
 
   return (
     <>
+      <Head>
+        {/* Primary Title and Description */}
+        <title>Toskie - Find Local Professionals Near You</title>
+        <meta
+          name="description"
+          content="Toskie connects you with local professionals like plumbers, electricians, doctors, makeup artists, and more. Find the right expert near you based on ratings and reviews."
+        />
+
+        {/* Keywords for SEO */}
+        <meta
+          name="keywords"
+          content="Toskie, local professionals, find professionals, plumbers, electricians, doctors, makeup artists, web designers, home cleaners, service providers"
+        />
+
+        {/* Author Info */}
+        <meta name="author" content="Toskie Team" />
+
+        {/* Open Graph Tags (Social Sharing) */}
+        <meta property="og:title" content="Toskie - Find Local Professionals Near You" />
+        <meta
+          property="og:description"
+          content="Discover local professionals like plumbers, electricians, teachers, makeup artists, web designers, and more on Toskie. Get ratings and reviews to make informed decisions."
+        />
+        <meta property="og:url" content="https://toskie.com/" />
+        <meta
+          property="og:image"
+          content="https://www.toskie.com/assets/images/home-toskie.png" // Use the URL of your homepage image or logo
+        />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Toskie - Find Local Professionals Near You" />
+        <meta
+          name="twitter:description"
+          content="Find trusted local professionals for your needs - from plumbers to doctors, all with reviews and ratings on Toskie."
+        />
+        <meta name="twitter:image" content="https://toskie.com/path/to/your/og-image.jpg" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://toskie.com/" />
+        <main>
+          <h1>Welcome to Toskie</h1>
+          <p>Find local professionals near you with ease and confidence.</p>
+        </main>
+      </Head>
+     
       <Box sx={{ minHeight: "100vh", backgroundColor: "#f1efef", }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', pt: 4 }}>
@@ -38,17 +87,25 @@ const page = () => {
             {/* Search Box */}
             <Grid item xs={12} sm={5}>
               <Box sx={{ display: 'flex', alignItems: 'center', backgroundColor: '#f1f1f1', borderRadius: '4px' }}>
-                <InputAdornment position="start">
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
                 <TextField
                   fullWidth
                   variant="outlined"
                   placeholder="Search profession"
                   value={searchValue}
                   onChange={handleSearchChange}
+                   InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <CloseIcon />
+                  </InputAdornment>
+                ),
+              }}
+
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       borderRadius: '6px',
@@ -68,17 +125,20 @@ const page = () => {
             {/* Location Box */}
             <Grid item xs={12} sm={5}>
               <Box sx={{ display: 'flex', alignItems: 'center', backgroundColor: '#f1f1f1', borderRadius: '4px' }}>
-                <InputAdornment position="start">
-                  <IconButton>
-                    <LocationIcon />
-                  </IconButton>
-                </InputAdornment>
                 <TextField
                   fullWidth
                   variant="outlined"
                   placeholder="Enter your location"
                   value={locationValue}
                   onChange={handleLocationChange}
+                  InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LocationIcon />
+                  </InputAdornment>
+                ),
+              }}
+
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       borderRadius: '6px',
@@ -123,6 +183,7 @@ const page = () => {
 
         </Container>
         <Box sx={{ py: 4, backgroundColor: "#fff", }}>
+          <CategorySlider />
         </Box>
         <DownloadApp />
         
@@ -131,5 +192,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
 
