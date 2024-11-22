@@ -7,10 +7,11 @@ import {
     Box,
     IconButton,
     Drawer,
+    Typography
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import GridViewIcon from '@mui/icons-material/GridView';
 import CheckIcon from "@mui/icons-material/Check";
-
+import CloseIcon from '@mui/icons-material/Close';
 const Sidebar: React.FC = () => {
     const [activeKey, setActiveKey] = useState<string>("");
     const [isDrawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -30,7 +31,7 @@ const Sidebar: React.FC = () => {
 
     const handleSelect = (key: string) => {
         setActiveKey(key);
-        setDrawerOpen(false); // Close the drawer after selection
+        setDrawerOpen(false);
     };
 
     const toggleDrawer = () => {
@@ -40,15 +41,18 @@ const Sidebar: React.FC = () => {
     return (
         <>
             {/* Three Dots Icon for Small Screens */}
-            <IconButton
+            <Typography
                 onClick={toggleDrawer}
                 sx={{
                     display: { xs: "block", md: "none" },
-                    position: "static"
+                    position: "static",
+                    color: "#000",
+                    width: "100%", 
+                    maxWidth: { xs: "100%", lg: "lg" }, 
                 }}
             >
-                <MoreVertIcon sx={{ fontSize: "16px" }} />
-            </IconButton>
+                <GridViewIcon />
+            </Typography>
 
             {/* Drawer for Small Screens */}
             <Drawer
@@ -68,12 +72,28 @@ const Sidebar: React.FC = () => {
                 }}
 
             >
+                {/* Close Icon */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        px: 2,
+                        py: 1,
+                        borderBottom: "1px solid #ddd",
+                    }}
+                >
+                    <Typography variant="h6">Categories</Typography>
+                    <IconButton onClick={toggleDrawer}>
+                        <CloseIcon sx={{ color: "#000" }} />
+                    </IconButton>
+                </Box>
                 <List sx={{
-                    width: "100%", 
+                    width: "100%",
                     backgroundColor: "#fff",
-                    px: 0, 
+                    px: 0,
                     "& .MuiListItem-root": {
-                        borderBottom: "1px solid #ddd", 
+                        borderBottom: "1px solid #ddd",
                     },
                 }}>
                     {menu.map((item) => (
@@ -87,7 +107,7 @@ const Sidebar: React.FC = () => {
                                 cursor: "pointer",
                                 backgroundColor: activeKey === item.key ? "#f1f1f1" : "transparent",
                                 transition: "all 0.3s ease-in-out",
-                                display: "flex", 
+                                display: "flex",
                                 alignItems: "center",
                                 "&:hover": {
                                     backgroundColor: "#dadada",
@@ -123,6 +143,8 @@ const Sidebar: React.FC = () => {
                     minHeight: "83vh",
                     maxWidth: 360,
                     boxShadow: 2,
+                    pt: 0,
+                    pb: 0,
                     backgroundColor: "#fff",
                     display: { xs: "none", md: "block" },
                 }}

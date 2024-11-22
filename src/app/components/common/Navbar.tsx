@@ -37,10 +37,10 @@ const Navbar: React.FC = () => {
 
     return (
         <Box sx={{ backgroundColor: "#f1efef" }}>
-            <AppBar
+            <AppBar 
                 position="sticky"
                 color="default"
-                sx={{ backgroundColor: "#f1efef", boxShadow: "none" }}
+                sx={{ backgroundColor: "#f1efef", boxShadow: "none",width:"100%" }}
             >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>

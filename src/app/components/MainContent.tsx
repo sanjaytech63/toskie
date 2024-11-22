@@ -138,44 +138,46 @@ const MainContent: React.FC<MainContentProps> = ({ data }) => {
                             </Grid>
 
                             {/* Image Gallery */}
-                            <Grid item xs={12} sm={8}>
-                                <CardContent sx={{padding: 0}}>
-                                    <Carousel {...carouselSettings} showDots={isMobile ? true : false}>
-                                        {item.images.map((img, index) => (
-                                            <Box
-                                                key={index}
+                            <Grid item xs={12} sm={8} sx={{ p: 0 }}>
+                                <Carousel {...carouselSettings} showDots={isMobile ? true : false}>
+                                    {item.images.map((img, index) => (
+                                        <Box
+                                            key={index}
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                cursor: "pointer",
+                                                margin: { xs: 0, sm: "0 8px" },
+                                                borderRadius: "4px",
+                                            }}
+                                            onMouseDown={handleOnMouseDown}
+                                            onClick={(e) => handleOnClick(e)}
+                                            draggable={false}
+                                        >
+                                            <CardMedia
+                                                component="img"
                                                 sx={{
-                                                    marginRight: 2,
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    alignItems: "center",
-                                                    cursor: "pointer"
+                                                    height: "120px",
+                                                    objectFit: "cover",
+                                                    borderRadius: "4px",
                                                 }}
-                                                onMouseDown={handleOnMouseDown}
-                                                onClick={(e) => handleOnClick(e)}
-                                                draggable={false}
+                                                image={img}
+                                                alt={`Job ${index + 1}`}
+                                            />
+                                        </Box>
+                                    ))}
+                                </Carousel>
 
-                                            >
-                                                <CardMedia
-                                                    component="img"
-                                                    sx={{
-                                                        height: "120px",
-                                                        objectFit: "cover",
-                                                        borderRadius: "4px",
-                                                    }}
-                                                    image={img}
-                                                    alt={`Job ${index + 1}`}
-
-                                                />
-                                            </Box>
-                                        ))}
-                                    </Carousel>
-                                </CardContent>
 
                                 <Box sx={{
-                                    display: "flex", my: 1, gap: 1, ml: 2, "@media (max-width: 1024px)": {
-                                        gap: "6px"
-                                    },
+                                    display: "flex",
+                                    my: 1,
+                                    gap: 1,
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    flexWrap: "wrap",
+                                    width: "100%",
                                 }}>
                                     <Button
                                         variant="contained"

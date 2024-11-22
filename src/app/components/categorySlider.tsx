@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
 import { Grid, Box, Typography } from "@mui/material";
-
+import { useRouter } from 'next/navigation'
 const categories = [
     { id: 1, name: "Agriculture", imgUrl: "https://www.toskie.com/assets/images/mainCategoryImages/ic_serviceicon_agriculture.png" },
     { id: 2, name: "Artist", imgUrl: "https://www.toskie.com/assets/images/mainCategoryImages/ic_serviceicon_artist.png" },
@@ -15,12 +17,13 @@ const categories = [
 ];
 
 const CategorySlider = () => {
+    const router = useRouter()
     return (
         <Box sx={{ padding: "20px" }}>
             <Grid container spacing={3}>
                 {categories.map((category) => (
                     <Grid key={category.id} item xs={6} sm={4} md={3} lg={2}>
-                        <Box
+                        <Box onClick={() => router.push('/profile')}
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -29,6 +32,7 @@ const CategorySlider = () => {
                                 border: "1px solid #ddd",
                                 borderRadius: "8px",
                                 textAlign: "center",
+                                cursor: "pointer",
                                 transition: "transform 0.3s",
                                 "&:hover": {
                                     transform: "scale(1.05)",
@@ -58,7 +62,7 @@ const CategorySlider = () => {
                             </Box>
 
                             {/* Category Name */}
-                            <Typography  sx={{ fontWeight: "bold",fontSize:"13px" }}>
+                            <Typography sx={{ fontWeight: "bold", fontSize: "13px" }}>
                                 {category.name}
                             </Typography>
                         </Box>
